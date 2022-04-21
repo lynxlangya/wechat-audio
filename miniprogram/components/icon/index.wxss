@@ -1,0 +1,72 @@
+/* components/icon/icon.wxss */
+@font-face {
+  font-family: "iconfont"; /* Project id 3347725 */
+  src: url('//at.alicdn.com/t/font_3347725_rddwk3ftrbd.woff2?t=1650531799674') format('woff2'),
+       url('//at.alicdn.com/t/font_3347725_rddwk3ftrbd.woff?t=1650531799674') format('woff'),
+       url('//at.alicdn.com/t/font_3347725_rddwk3ftrbd.ttf?t=1650531799674') format('truetype');
+}
+
+.iconfont {
+  font-family: 'iconfont' !important;
+  font-size: 1.5rem;
+  color: #fbfbfd;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-prev-new:before {
+  content: "\e607";
+}
+
+.icon-next-new:before {
+  content: "\e62c";
+}
+
+.icon-list-new:before {
+  content: "\e645";
+}
+
+.icon-more:before {
+  content: "\e78d";
+}
+
+.icon-collection:before {
+  content: "\e675";
+}
+
+.icon-play:before {
+  content: "\e87c";
+}
+
+.icon-download:before {
+  content: "\eb2c";
+}
+
+.icon-pause:before {
+  content: "\ea81";
+}
+
+.icon-like:before {
+  content: "\e8ad";
+}
+
+.icon-comments:before {
+  content: "\e8b4";
+}
+
+.icon-fastForward:before {
+  content: "\e77e";
+}
+
+.icon-fastReverse:before {
+  content: "\e782";
+}
+
+.icon-timesSpeed:before {
+  content: "\e608";
+}
+
+.icon-timing:before {
+  content: "\e6a3";
+}

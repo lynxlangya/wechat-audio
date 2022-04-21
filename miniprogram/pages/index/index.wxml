@@ -1,0 +1,84 @@
+<!--index.wxml-->
+<wxs module="utils">
+  function formatTime(time) {
+    var min = parseInt(time / 60);
+    var sec = parseInt(time % 60);
+    return (min < 10 ? "0" + min : min) + ":" + (sec < 10 ? "0" + sec : sec);
+  }
+  module.exports = {
+    formatTime: formatTime
+  }
+</wxs>
+<view class="container">
+  <view class="_logo-box">
+    <image class="logo" src="{{ detailInfo.image }}" mode="aspectFill" />
+  </view>
+  <!-- 标题 -->
+  <view class="_title-box">{{ detailInfo.title }}</view>
+
+  <!-- 操作 -->
+  <view class="_icon-box">
+    <mp-icon icon="timing" bind:tap="handleTiming"></mp-icon>
+    <mp-icon icon="download" customStyle="font-size: 1.8rem;" bind:tap="handleDownload"></mp-icon>
+    <mp-icon icon="more" bind:tap="handleMore"></mp-icon>
+  </view>
+  
+  <!-- 进度｜快进/退 -->
+  <view class="_progress-box">
+    <mp-icon icon="fastReverse" data-v="1" bind:tap="handleDilemma"></mp-icon>
+    <view class="_progress">
+      <slider
+        max="{{ detailInfo.maxTime }}"
+        value="{{ hasTime }}"
+        block-size="{{ 12 }}"
+        block-color="#fbfbfd"
+        backgroundColor="#ECECEC"
+        activeColor="#fff"
+        bind:change="handleChangeSlider"
+        bind:changing="handleChangingSlider"
+        style="margin: 1rem 1rem 5px;"
+      />
+      <view class="_time-box">
+        <view class="_time-left">{{ utils.formatTime(hasTime) }}</view>
+        <view class="_time-right">{{ utils.formatTime(detailInfo.maxTime || 0) }}</view>
+      </view>
+    </view>
+    <mp-icon icon="fastForward" data-v="2" bind:tap="handleDilemma"></mp-icon>
+  </view>
+
+  <!-- 播放｜列表｜上/下｜倍速 -->
+  <view class="_opt-box">
+    <mp-icon icon="list-new" bind:tap="handleList"></mp-icon>
+    <view class="_opt-audio">
+      <mp-icon icon="prev-new" data-v="1" bind:tap="handleChangeSwitch"></mp-icon>
+      <mp-icon icon="{{ isPlay ? 'pause' : 'play'}}" customStyle="font-size: 2.5rem;" bind:tap="handleChangePlay" />
+      <mp-icon icon="next-new" data-v="2" bind:tap="handleChangeSwitch"></mp-icon>
+    </view>
+    <mp-icon icon="timesSpeed" bind:tap="handleSpeed"></mp-icon>
+  </view>
+
+  <!-- 详情 -->
+  <view class="_detail-box">
+    <view style="font-weight: bold; margin-bottom: 1rem;">汉武帝</view>
+    <view style="font-size: 0.8rem;">
+      汉武帝刘彻（前156年－前87年3月29日），西汉第七位皇帝，是中国历史上著名和杰出的皇帝、政治家和军事家，常被后世争相效法明君的典范之一。于7岁时被册立为储君，16岁登基，在位达53年345天。其正式谥号为“孝武皇帝”，后世省略“孝”字称“汉武帝”，是清圣祖以前在位最长的中国皇帝，也是中国历史上在位第三长的皇帝，也是中国历史上在位最长的汉人皇帝，更是第一个使用年号的皇帝。武帝即位初期，适逢国家休生养息了70年，商业贸易达臻鼎盛，接着因扩张战略，疆域大幅增加，但导致民生凋零、经济衰败，深远影响两汉的国势。
+    </view>
+  </view>
+
+  <!-- 评论 -->
+  <view class="_comments-box">
+    <view class="title">评论</view>
+  </view>
+
+  <view style="height: 5rem;background:#313132;"></view>
+  <view class="_footer-box">
+    <view class="_input">
+      <view>记录收听感受...</view>
+    </view>
+    <view class="opt">
+      <mp-icon icon="like" customStyle="{{ isLike ? 'color: red;' : '' }}" bind:tap="handleLike" />
+      <mp-icon icon="collection" />
+      <mp-icon icon="comments" />
+    </view>
+  </view>
+</view>
